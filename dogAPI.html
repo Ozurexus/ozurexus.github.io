@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dogs' place</title>
+    <style>
+        html {
+            background: url(https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center fixed;
+            background-size: cover;
+            color: whitesmoke;
+        }
+
+        button {
+            color: aqua;
+            background-color: purple;
+            height: 5em;
+            width: 10em;
+        }
+        #flex {
+            width: 100%;
+            height: fit-content;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+        }
+        #flex img{
+            width: 33%;
+            height: auto;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="GetADog" onclick="revealDog()">Click to get a dog</button>
+    <div class="flex-container" id="flex">
+        <img id="dog1">
+        <img id="dog2">
+        <img id="dog3">
+    </div>
+</body>
+<script>
+    i = 1;
+    const dog1 = document.getElementById('dog1');
+    const dog2 = document.getElementById('dog2');
+    const dog3 = document.getElementById('dog3');
+    async function getDog() {
+        const response1 = await fetch("https://dog.ceo/api/breeds/image/random", { method: "GET" });
+        const response2 = await fetch("https://dog.ceo/api/breeds/image/random", { method: "GET" });
+        const response3 = await fetch("https://dog.ceo/api/breeds/image/random", { method: "GET" });
+        response1.json().then(data => { console.log(data.message); dog1.src = (data.message); });
+        response2.json().then(data => { console.log(data.message); dog2.src = (data.message); });
+        response3.json().then(data => { console.log(data.message); dog3.src = (data.message); });
+    }
+    getDog();
+    function revealDog() {
+        if (i == 1) dog1.style.opacity = 100;
+        if (i == 2) dog2.style.opacity = 100;
+        if (i == 3) dog3.style.opacity = 100;
+        if (i >= 4) alert("Sorry, we ran out of dogs ;(");
+        i++;
+    }
+    
+
+</script>
+
+</html>
