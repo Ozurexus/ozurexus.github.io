@@ -1,27 +1,26 @@
 name: Build and Deploy
-on: [push]
-permissions:
-  contents: write
+
+on:
+  push:
+    branches:
+      - master
+
 jobs:
   build-and-deploy:
-    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    name: Build and Deploy to GH Pages
     runs-on: ubuntu-latest
-    environment: github-pages
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-        run: |
-          npm ci
-          npm run build
-        env:
-          CI: ""
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+      - name: Setup Node.js v16
+        uses: actions/setup-node@v3
         with:
-          branch: master # The branch the action should deploy to.
-          folder: .github/workflows # The folder the action should deploy.
-          repository-name: Ozurexus/ozurexus.github.io
-          token: ${{ secrets.TOKEN }}
+          node-version: '16'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build website
+        run: npm run build
+      - name: Deploy to GitHub Page
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
