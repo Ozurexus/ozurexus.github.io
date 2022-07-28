@@ -1,48 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Piniagin Maxim's site</title>
     <style>
-        html {
-            background: url(/images/nasa.jpg) no-repeat center center fixed;
-            background-size: cover;
-            color: whitesmoke;
-        }
+      html {
+        background: url(/images/nasa.jpg) no-repeat center center fixed;
+        background-size: cover;
+        color: whitesmoke;
+      }
 
-        a {
-            margin-right: 10px;
-            color: aqua;
-        }
+      img {
+        width: 100px;
+        height: auto;
+      }
+      button {
+        color: aqua;
+        background-color: purple;
+        height: 5em;
+        width: 10em;
+      }
 
-        h1 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+      .flex-container {
+        display: flex;
+        height: fit-content;
+        width: 100%;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 10px;
+      }
 
-        p {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-style: italic;
-        }
+      .flex-container img {
+        height: 100%;
+        width: 30vw;
+        opacity: 0;
+        flex-grow: 1;
+        margin: 10px;
+      }
+      a {
+        margin-right: 10px;
+        color: aqua;
+      }
 
-        body {
-            font-size: x-large;
-        }
+      h1 {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      p {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-style: italic;
+      }
+
+      body {
+        font-size: x-large;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Hi!</h1>
-        <p> My name is Maxim Pinyaguin and welcome to my very own site :)</p>
-        <nav> Navigation:
-            <a href="./about.html">About me</a>
-            <a href="./projects.html">Projects</a>
-            <a href="./contact.html">Contact me</a>
-            <a href="./dogAPI.html">Click to see dogs</a>
-        </nav>
-
+      <h1>Hi!</h1>
+      <p>My name is Maxim Pinyaguin and welcome to my very own site :)</p>
+      <nav>
+        Navigation:
+        <a href="./about.html">About me</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./contact.html">Contact me</a>
+      </nav>
     </header>
-
-</body>
-
+    <button id="getadog" onclick="getDog()">Click to get a dog</button>
+    <div class="flex-container" id="flex">
+      <div><img id="dog1" src="/images/loading2.gif" alt="" /></div>
+      <div><img id="dog2" src="/images/loading2.gif" alt="" /></div>
+      <div><img id="dog3" src="/images/loading2.gif" alt="" /></div>
+    </div>
+    <script src="./bundle.js"></script>
+  </body>
 </html>

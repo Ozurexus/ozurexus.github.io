@@ -12,10 +12,6 @@
     "skipLibCheck": true,
     "noEmitHelpers": false
   },
-  "include": [
-    "src/main.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/main.ts"],
+  "exclude": ["node_modules"]
 }
